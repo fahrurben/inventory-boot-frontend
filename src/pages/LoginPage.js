@@ -36,7 +36,7 @@ class LoginPage extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === statusEnum.SUCCESS) {
-      this.props.history.push('/home');
+      setTimeout(() => this.props.history.push('/home'), 2000);
     }
   }
 
@@ -56,6 +56,7 @@ class LoginPage extends Component {
     return (
       <div className="columns">
         <div className="column">
+          <h2 className="title is-2">Inventory</h2>
           {
             status === statusEnum.SUCCESS &&
             <div className="notification is-success">

@@ -36,6 +36,11 @@ server.post('/login', (req, res) => {
   }
 });
 
+// Get customers
+server.post('/api/customers/search', (req, res) => {
+  staticJsonResponse(res, 'customers.json');
+});
+
 server.use(middlewares);
 server.use(router);
 server.listen(8081, () => {

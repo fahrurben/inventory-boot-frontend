@@ -1,0 +1,26 @@
+{
+  "total": 1,
+  "totalPage": 1,
+  "data":
+  [
+    {
+      "id": 1,
+      "contactName": "test",
+      "contactPhone": "123",
+      "contactFax": "123",
+      "contactEmail": "test@test.com",
+      "contactWebsite": "www.test.com",
+      "addressStreet": "test",
+      "addressCity": "test",
+      "addressProvince": "test",
+      "addressPostalCode": "123",
+      "addressRemarks": "test",
+      "shippingStreet": "test",
+      "shippingCity": "test",
+      "shippingProvince": "test",
+      "shippingPostalCode": "test",
+      "shippingRemarks": "test",
+      "remarks": "test"
+    }
+  ]
+}
