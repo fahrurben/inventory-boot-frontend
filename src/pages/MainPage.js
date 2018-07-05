@@ -11,9 +11,7 @@ class MainPage extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
-        </ul>
+      <div className="container">
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/" component={HomePage} />
