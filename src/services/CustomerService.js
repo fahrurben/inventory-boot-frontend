@@ -21,6 +21,16 @@ export function createCustomer(customer) {
     .then(parseJSON);
 }
 
+export function updateCustomer(customer) {
+  return fetch(getApiUrl() + '/api/customers/' + customer.id, {
+    method: 'PUT',
+    headers: getHeaderForAjax(),
+    body: JSON.stringify(customer)
+  })
+    .then(checkStatus)
+    .then(parseJSON);
+}
+
 export function getCustomer(id) {
   return fetch(getApiUrl() + '/api/customers/' + id, {
     method: 'GET',

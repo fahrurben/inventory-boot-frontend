@@ -21,6 +21,8 @@ function reducer(state = initialState, action) {
   switch (action.type) {
   case getStarted(CUSTOMER_UPDATE_SUBMIT):
     return { ...state, isLoading: true };
+  case getSucceeded(CUSTOMER_UPDATE_INITIAL):
+    return { ...state, status: statusEnum.DEFAULT, initialData: action.payload }  
   case getSucceeded(CUSTOMER_UPDATE_SUBMIT):
     return { ...state, status: statusEnum.SUCCESS };
   case getFailed(CUSTOMER_UPDATE_SUBMIT):

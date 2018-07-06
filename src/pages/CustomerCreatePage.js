@@ -120,9 +120,13 @@ class CustomerCreatePage extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.createInitial();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === statusEnum.SUCCESS) {
-      setTimeout(() => this.props.history.push('/customerList'), 2000);
+      setTimeout(() => this.props.history.push('/customer'), 2000);
     }
   }
 
@@ -131,7 +135,7 @@ class CustomerCreatePage extends Component {
   }
 
   cancel() {
-    this.props.history.push('/customerList');
+    this.props.history.push('/customer');
   }
 
   render() {

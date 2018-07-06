@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { Field, reduxForm } from 'redux-form';
 import { InputField, Validations } from '../components';
 import _ from 'lodash';
@@ -112,40 +114,54 @@ let FormCustomerUpdate = props => {
 };
 
 FormCustomerUpdate = reduxForm({
-  form: 'formCustomerUpdate'
+  form: 'formCustomerUpdate',
+  enableReinitialize: true
 })(FormCustomerUpdate);
+
+FormCustomerUpdate = withRouter(connect(
+  state => ({
+    initialValues: state.customerUpdate.initialData
+  })
+)(FormCustomerUpdate));
 
 class CustomerUpdatePage extends Component {
   constructor(props) {
     super(props);
+
+    this.id = props.match.params.id;
+  }
+
+  componentDidMount() {
+    this.props.getCustomer(this.id);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === statusEnum.SUCCESS) {
-      setTimeout(() => this.props.history.push('/customerList'), 2000);
+      setTimeout(() => this.props.history.push('/customer'), 2000);
     }
   }
 
   handleSubmit(values) {
-    this.props.createCustomer(values);
+    values.id = this.id;
+    this.props.updateCustomer(values);
   }
 
   cancel() {
-    this.props.history.push('/customerList');
+    this.props.history.push('/customer');
   }
 
   render() {
     
-    const { isLoading, status, actionResponse} = this.props;
+    const { isLoading, status, actionResponse, initialData, customer} = this.props;
 
     return (
       <div className="columns">
         <div className="column">
-          <h2 className="title is-2">Create Customer</h2>
+          <h2 className="title is-2">Update Customer</h2>
           {
             status === statusEnum.SUCCESS &&
             <div className="notification is-success">
-              Create Customer Success
+              Update Customer Success
             </div>
           }
           {
@@ -154,7 +170,7 @@ class CustomerUpdatePage extends Component {
               { actionResponse.message }
             </div>
           }
-          <FormCustomerCreate 
+          <FormCustomerUpdate 
             onSubmit={this.handleSubmit.bind(this)} 
             onCancel={this.cancel.bind(this)}
           />

@@ -7,6 +7,7 @@ import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import CustomerListPage from './CustomerListPage';
 import CustomerCreatePage from './CustomerCreatePage';
+import CustomerUpdatePage from './CustomerUpdatePage';
 
 class MainPage extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class MainPage extends Component {
                       Data
                     </a>
                     <div className="navbar-dropdown is-boxed">
-                      <Link to="/customerList" className="navbar-item">Customer</Link>
+                      <Link to="/customer" className="navbar-item">Customer</Link>
                     </div>
                   </div>
                   <div className="navbar-end">
@@ -58,8 +59,9 @@ class MainPage extends Component {
         }
         <Switch>
           <Route path="/home" component={HomePage} />  
-          <Route path="/customerList" component={CustomerListPage} />
-          <Route path="/customerCreate" component={CustomerCreatePage} />
+          <Route path="/customer/create" component={CustomerCreatePage} />
+          <Route path="/customer/update/:id" component={CustomerUpdatePage} />
+          <Route path="/customer" component={CustomerListPage} />
           <Route path="/" component={LoginPage} />
         </Switch>
       </div>

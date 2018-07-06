@@ -27,7 +27,7 @@ const InputField = ({
         <label className="label">{label} {requiredSpan}</label>
       }
       <p className={controlClass}>
-        <input onChange={input.onChange} className="input" type={type} placeholder={placeholder}/>
+        <input onChange={input.onChange} value={input.value} className="input" type={type} placeholder={placeholder}/>
         {
           leftIcon &&
           <span className="icon is-small is-left">

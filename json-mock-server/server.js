@@ -22,6 +22,31 @@ function staticJsonResponse(res, jsonFile) {
   res.json(jsonfile.readFileSync(path.join(__dirname, jsonFile)));
 }
 
+function fakeCustomer(id) {
+  const customer = {};
+
+  customer.id = id;
+  customer.name = faker.name.findName(); 
+  customer.contactName = faker.name.findName();
+  customer.contactPhone = faker.phone.phoneNumber();
+  customer.contactFax = faker.phone.phoneNumber();
+  customer.contactEmail = faker.internet.email();
+  customer.contactWebsite = faker.internet.url();
+  customer.addressStreet = faker.address.streetAddress();
+  customer.addressCity = faker.address.city();
+  customer.addressProvince = faker.address.state();
+  customer.addressPostalCode = faker.address.zipCode();
+  customer.addressRemarks = "";
+  customer.shippingStreet = faker.address.streetAddress();
+  customer.shippingCity = faker.address.city();
+  customer.shippingProvince = faker.address.state();
+  customer.shippingPostalCode = faker.address.zipCode();
+  customer.shippingRemarks = "";
+  customer.remarks = "";
+
+  return customer; 
+}
+
 server.use(jsonServer.bodyParser);
 
 // Authenticate custom route
@@ -41,23 +66,7 @@ server.post('/login', (req, res) => {
 server.post('/api/customers/search', (req, res) => {
   const customers = [];
   for(var i=0;i<10;i++) {
-    const customer = {};
-    customer.contactName = faker.name.findName();
-    customer.contactPhone = faker.phone.phoneNumber();
-    customer.contactFax = faker.phone.phoneNumber();
-    customer.contactEmail = faker.internet.email();
-    customer.contactWebsite = faker.internet.url();
-    customer.addressStreet = faker.address.streetAddress();
-    customer.addressCity = faker.address.city();
-    customer.addressProvince = faker.address.state();
-    customer.addressPostalCode = faker.address.zipCode();
-    customer.addressRemarks = "";
-    customer.shippingStreet = faker.address.streetAddress();
-    customer.shippingCity = faker.address.city();
-    customer.shippingProvince = faker.address.state();
-    customer.shippingPostalCode = faker.address.zipCode();
-    customer.shippingRemarks = "";
-    customer.remarks = "";
+    const customer = fakeCustomer(i+1);
     customers.push(customer);
   }
 
@@ -75,6 +84,13 @@ server.post('/api/customers/search', (req, res) => {
 server.post('/api/customers', (req, res) => {
   putCors(res);
   res.json({message: 'success'});
+});
+
+// Customer get
+server.get('/api/customers/:id', (req, res) => {
+  putCors(res);
+  const customer = fakeCustomer(req.params.id);
+  res.json(customer);
 });
 
 // Customer update

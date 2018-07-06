@@ -4,6 +4,7 @@ import {
   getSucceeded,
   getEnded,
   statusEnum,
+  CUSTOMER_CREATE_INITIAL,
   CUSTOMER_CREATE_SUBMIT
 } from '../actions/constant';
 
@@ -18,6 +19,8 @@ function reducer(state = initialState, action) {
   switch (action.type) {
   case getStarted(CUSTOMER_CREATE_SUBMIT):
     return { ...state, isLoading: true };
+  case getSucceeded(CUSTOMER_CREATE_INITIAL):
+    return { ...state, status: statusEnum.DEFAULT };  
   case getSucceeded(CUSTOMER_CREATE_SUBMIT):
     return { ...state, status: statusEnum.SUCCESS };
   case getFailed(CUSTOMER_CREATE_SUBMIT):

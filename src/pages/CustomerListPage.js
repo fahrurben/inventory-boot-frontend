@@ -11,6 +11,7 @@ class CustomerPage extends Component {
 
     this.gotoPage = this.gotoPage.bind(this);
     this.createLink = this.createLink.bind(this);
+    this.goUpdate = this.goUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +23,11 @@ class CustomerPage extends Component {
   }
 
   createLink() {
-    this.props.history.push('/customerCreate');
+    this.props.history.push('/customer/create');
+  }
+
+  goUpdate(id) {
+    this.props.history.push('/customer/update/' + id);
   }
 
   render() {
@@ -37,9 +42,9 @@ class CustomerPage extends Component {
           <div className="column">
             <h2 className="title is-2">
               Customer
-              <button onClick={() => this.createLink()} class="button is-primary">
-                <span class="icon is-small">
-                  <i class="fas fa-plus"></i>
+              <button onClick={() => this.createLink()} className="button is-primary">
+                <span className="icon is-small">
+                  <i className="fas fa-plus"></i>
                 </span>
               </button>
             </h2>
@@ -53,6 +58,7 @@ class CustomerPage extends Component {
                   <th>Name</th>
                   <th>Address</th>
                   <th>Phone</th>
+                  <th>Operation</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,9 +66,17 @@ class CustomerPage extends Component {
                   customers && customers.map( (customer, i) => {
                     return (
                       <tr key={i}>
-                        <td>{customer.contactName}</td>
+                        <td>{customer.name}</td>
                         <td>{customer.addressStreet}</td>
                         <td>{customer.contactPhone}</td>
+                        <td>
+                          <button onClick={() => this.goUpdate(customer.id)} 
+                            className="button is-small is-primary">
+                            <span className="icon is-small">
+                              <i class="fas fa-edit"></i>
+                            </span>
+                          </button>
+                        </td>
                       </tr>
                     )
                   })
