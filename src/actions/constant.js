@@ -17,3 +17,4 @@ export const statusEnum = Object.freeze({
 export const LOGIN_SET_DEFAULT = 'LOGIN_SET_DEFAULT';
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const CUSTOMER_LIST_SEARCH = 'CUSTOMER_LIST_SEARCH';
+export const CUSTOMER_CREATE_SUBMIT = 'CUSTOMER_CREATE_SUBMIT';

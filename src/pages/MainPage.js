@@ -6,6 +6,7 @@ import { isLoggedIn, logout } from '../services/AuthenticationService';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import CustomerListPage from './CustomerListPage';
+import CustomerCreatePage from './CustomerCreatePage';
 
 class MainPage extends Component {
   constructor(props) {
@@ -39,11 +40,11 @@ class MainPage extends Component {
                   </a>
                 </div>
                 <div className="navbar-menu">
-                  <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
+                  <div className="navbar-item has-dropdown is-hoverable">
+                    <a className="navbar-link">
                       Data
                     </a>
-                    <div class="navbar-dropdown is-boxed">
+                    <div className="navbar-dropdown is-boxed">
                       <Link to="/customerList" className="navbar-item">Customer</Link>
                     </div>
                   </div>
@@ -58,6 +59,7 @@ class MainPage extends Component {
         <Switch>
           <Route path="/home" component={HomePage} />  
           <Route path="/customerList" component={CustomerListPage} />
+          <Route path="/customerCreate" component={CustomerCreatePage} />
           <Route path="/" component={LoginPage} />
         </Switch>
       </div>

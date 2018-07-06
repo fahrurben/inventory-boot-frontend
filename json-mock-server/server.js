@@ -71,6 +71,12 @@ server.post('/api/customers/search', (req, res) => {
   res.json(ret);
 });
 
+// Customer create
+server.post('/api/customers', (req, res) => {
+  putCors(res);
+  res.json({message: 'success'});
+});
+
 server.use(middlewares);
 server.use(router);
 server.listen(8081, () => {

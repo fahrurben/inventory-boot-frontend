@@ -10,6 +10,7 @@ class CustomerPage extends Component {
     super(props);
 
     this.gotoPage = this.gotoPage.bind(this);
+    this.createLink = this.createLink.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +19,10 @@ class CustomerPage extends Component {
 
   gotoPage(page) {
     this.props.searchCustomers({page: page, size: 20});
+  }
+
+  createLink() {
+    this.props.history.push('/customerCreate');
   }
 
   render() {
@@ -30,7 +35,14 @@ class CustomerPage extends Component {
       <div>
         <div className="columns">
           <div className="column">
-            <h2 className="title is-2">Customer</h2>
+            <h2 className="title is-2">
+              Customer
+              <button onClick={() => this.createLink()} class="button is-primary">
+                <span class="icon is-small">
+                  <i class="fas fa-plus"></i>
+                </span>
+              </button>
+            </h2>
           </div>
         </div>
         <div className="columns">

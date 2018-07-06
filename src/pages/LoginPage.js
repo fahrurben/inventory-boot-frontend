@@ -8,8 +8,6 @@ import { statusEnum } from '../actions/constant';
 import loginActions from '../actions/loginActions';
 
 let LoginForm = props => {
-  const { t } = props;
-
   return (
     <form onSubmit={props.handleSubmit}>
       <Field component={InputField} name="username" type="text" validate={Validations.required}
@@ -45,7 +43,6 @@ class LoginPage extends Component {
   }
 
   handleSubmit(values) {
-    console.log(values);
     this.props.loginSubmit(values);
   }
 

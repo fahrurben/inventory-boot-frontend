@@ -10,3 +10,13 @@ export function searchCustomers(dto) {
     .then(checkStatus)
     .then(parseJSON);
 }
+
+export function createCustomer(customer) {
+  return fetch(getApiUrl() + '/api/customers', {
+    method: 'POST',
+    headers: getHeaderForAjax(),
+    body: JSON.stringify(customer)
+  })
+    .then(checkStatus)
+    .then(parseJSON);
+}
