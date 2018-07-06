@@ -20,3 +20,12 @@ export function createCustomer(customer) {
     .then(checkStatus)
     .then(parseJSON);
 }
+
+export function getCustomer(id) {
+  return fetch(getApiUrl() + '/api/customers/' + id, {
+    method: 'GET',
+    headers: getHeaderForAjax()
+  })
+    .then(checkStatus)
+    .then(parseJSON);
+}

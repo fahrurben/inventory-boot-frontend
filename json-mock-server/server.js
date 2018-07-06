@@ -77,6 +77,12 @@ server.post('/api/customers', (req, res) => {
   res.json({message: 'success'});
 });
 
+// Customer update
+server.put('/api/customers/:id', (req, res) => {
+  putCors(res);
+  res.json({message: 'success'});
+});
+
 server.use(middlewares);
 server.use(router);
 server.listen(8081, () => {
