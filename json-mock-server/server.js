@@ -4,6 +4,7 @@ const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 const jsonfile = require('jsonfile');
+const faker = require('faker');
 const middlewares = jsonServer.defaults();
 
 function putCors(res) {
@@ -38,7 +39,36 @@ server.post('/login', (req, res) => {
 
 // Get customers
 server.post('/api/customers/search', (req, res) => {
-  staticJsonResponse(res, 'customers.json');
+  const customers = [];
+  for(var i=0;i<10;i++) {
+    const customer = {};
+    customer.contactName = faker.name.findName();
+    customer.contactPhone = faker.phone.phoneNumber();
+    customer.contactFax = faker.phone.phoneNumber();
+    customer.contactEmail = faker.internet.email();
+    customer.contactWebsite = faker.internet.url();
+    customer.addressStreet = faker.address.streetAddress();
+    customer.addressCity = faker.address.city();
+    customer.addressProvince = faker.address.state();
+    customer.addressPostalCode = faker.address.zipCode();
+    customer.addressRemarks = "";
+    customer.shippingStreet = faker.address.streetAddress();
+    customer.shippingCity = faker.address.city();
+    customer.shippingProvince = faker.address.state();
+    customer.shippingPostalCode = faker.address.zipCode();
+    customer.shippingRemarks = "";
+    customer.remarks = "";
+    customers.push(customer);
+  }
+
+  const ret = {
+    page: 1,
+    total: 2,
+    data: customers
+  }
+
+  putCors(res);
+  res.json(ret);
 });
 
 server.use(middlewares);

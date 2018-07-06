@@ -38,7 +38,7 @@ class MainPage extends Component {
             </div>
             <div className="navbar-menu">
               <Link to="/customerList" className="navbar-item">Customer</Link>
-              <a class="navbar-item" onClick={this.doLogout}>Logout</a>
+              <a className="navbar-item" onClick={this.doLogout}>Logout</a>
             </div>
           </nav>
         }
