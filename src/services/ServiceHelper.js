@@ -23,6 +23,6 @@ export function getApiUrl() {
 export function getHeaderForAjax() {
   return new Headers({
     'Content-Type': 'application/json',
-    'token': getAccessToken()
+    'Authorization': getAccessToken()
   });
 }

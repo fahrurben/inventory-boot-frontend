@@ -24,6 +24,7 @@ function reducer(state = initialState, action) {
   case getStarted(LOGIN_SUBMIT):
     return { ...state, isLoading: true };
   case getSucceeded(LOGIN_SUBMIT):
+    const accessToken = action.payload;
     setAccessToken(action.payload);
     return { ...state, status: statusEnum.SUCCESS };
   case getFailed(LOGIN_SUBMIT):

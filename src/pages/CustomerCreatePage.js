@@ -131,6 +131,7 @@ class CustomerCreatePage extends Component {
   }
 
   handleSubmit(values) {
+    values.isActive = true;
     this.props.createCustomer(values);
   }
 

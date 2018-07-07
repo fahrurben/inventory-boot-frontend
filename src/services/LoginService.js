@@ -9,5 +9,8 @@ export function authenticate(user) {
     body: JSON.stringify(user)
   })  
     .then(checkStatus)
-    .then(response => response.headers.get('Authorization'));
+    .then(response => {
+      const authToken = response.headers.get('Authorization');
+      return authToken;
+    });
 }

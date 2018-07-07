@@ -2,7 +2,8 @@ import { ACCESS_TOKEN_KEY } from './constant';
 
 // Get and store access_token in local storage
 export function getAccessToken() {
-  return localStorage.getItem(ACCESS_TOKEN_KEY);
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  return accessToken;
 }
 
 export function setAccessToken(accessToken) {
