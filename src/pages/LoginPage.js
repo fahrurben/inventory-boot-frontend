@@ -10,6 +10,7 @@ import loginActions from '../actions/loginActions';
 let LoginForm = props => {
   return (
     <form onSubmit={props.handleSubmit}>
+      <p>Demo, username: test password: test</p>
       <Field component={InputField} name="username" type="text" validate={Validations.required}
         placeholder="Username" required="true" leftIcon="fas fa-user"/>
       <Field component={InputField} name="password" type="password" validate={Validations.required} 
